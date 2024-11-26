@@ -12,14 +12,15 @@ DATASET = "ebmoon/GAD-dataset"
 # SPLIT = "SLIA"
 SPLIT = "BV4"
 # SPLIT = "CP"
+SIZE = 2
 
 NUM_ITER = 2000
 MODEL_ID = "mistralai/mistral-7b-instruct-v0.2"
 # MODEL_ID = "TinyLlama/TinyLlama_v1.1"
 TRIE_PATH = f"tries/{SPLIT}"
 RESULT_PATH = f"results/{SPLIT}"
-DEVICE = "cuda"
-# DEVICE = "cpu"
+# DEVICE = "cuda"
+DEVICE = "cpu"
 DTYPE = torch.bfloat16
 MAX_NEW_TOKENS = 512
 TEMPERATURE = 1.0
@@ -102,6 +103,7 @@ def main():
     model.resize_token_embeddings(len(tokenizer))
 
     dataset = load_dataset(DATASET, split=SPLIT)
+    dataset = dataset.select(range(SIZE)) # Use only the first SIZE examples
     for data in dataset:
         id = data['id']
         prompt = data['prompt']
