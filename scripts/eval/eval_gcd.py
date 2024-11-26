@@ -93,11 +93,11 @@ def main():
     device = torch.device(DEVICE)
 
     # Load tokenizer
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, use_auth_token=True)
     tokenizer.pad_token = tokenizer.eos_token
 
     # Load model
-    model = AutoModelForCausalLM.from_pretrained(MODEL_ID)
+    model = AutoModelForCausalLM.from_pretrained(MODEL_ID, use_auth_token=True)
     model.to(device)
     model.to(dtype=DTYPE)
     model.resize_token_embeddings(len(tokenizer))
