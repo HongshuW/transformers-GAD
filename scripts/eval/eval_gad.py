@@ -14,9 +14,9 @@ SPLIT = "BV4"
 # SPLIT = "CP"
 SIZE = 2
 
-NUM_ITER = 2000
-MODEL_ID = "mistralai/mistral-7b-instruct-v0.2"
-# MODEL_ID = "TinyLlama/TinyLlama_v1.1"
+NUM_ITER = 10
+# MODEL_ID = "mistralai/mistral-7b-instruct-v0.2"
+MODEL_ID = "TinyLlama/TinyLlama_v1.1"
 TRIE_PATH = f"tries/{SPLIT}"
 RESULT_PATH = f"results/{SPLIT}"
 # DEVICE = "cuda"
